@@ -9,4 +9,5 @@
 [![vulnerabilities](https://snyk.io/test/github/binkley/kotlin-poker-hand-kata/badge.svg)](https://snyk.io/test/github/binkley/kotlin-poker-hand-kata)
 [![license](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](http://unlicense.org/)
 
-See https://github.com/dwigle1/TDDPokerHands.
+See https://github.com/dwigle1/TDDPokerHands for an explanation of the kata.
+The original uses JavaScript; this version uses Kotlin.
