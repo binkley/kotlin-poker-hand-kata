@@ -1,21 +1,24 @@
-name: build
+name: Build with Gradle
 
 on:
   push:
     paths-ignore:
-      - README.md
+      - '*.md'
   pull_request:
     paths-ignore:
-      - README.md
+      - '*.md'
 
 jobs:
-  build-maven:
-    name: Builds and tests for Maven under Batect
+  build:
+    name: Builds and tests for Gradle under Batect
     runs-on: ubuntu-latest
 
     steps:
       - name: Clone repository
         uses: actions/checkout@master
+
+      - name: Validate Batect wrapper scripts
+        uses: batect/batect-wrapper-validation-action@v0.4.0
 
       - name: Restore Batect caches
         uses: actions/cache@master
@@ -32,23 +35,18 @@ jobs:
       - name: Manage Batect telemetry
         run: ./batect --permanently-enable-telemetry
 
-      - name: Restore Maven caches
+      - name: Restore Gradle caches
         uses: actions/cache@master
         env:
-          cache-name: maven-cache
+          cache-name: gradle-cache
         with:
-          path: ~/.m2
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pom.xml') }}
+          path: ~/.gradle
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{hashFiles('**/build.gradle') }}
+          # TODO: See discussion: https://github.com/jeremylong/DependencyCheck/issues/2560#issuecomment-702098748
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Build and test with Maven under Batect
+      - name: Build and test with Gradle under Batect
         run: ./batect build
-
-      - name: Execute run script
-        run: ./batect -o quiet demo
-
-      - name: Execute run script for Java
-        run: ./batect -o quiet java-demo

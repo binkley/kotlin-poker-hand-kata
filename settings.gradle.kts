@@ -1,0 +1,20 @@
+rootProject.name = "kotlin-poker-hand-kata"
+
+pluginManagement {
+    val dependencyCheckPluginVersion: String by settings
+    val detektPluginVersion: String by settings
+    val kotlinVersion: String by settings
+    val kotestVersion: String by settings
+    val ktlintPluginVersion: String by settings
+    val pitestPluginVersion: String by settings
+    val versionsPluginVersion: String by settings
+
+    plugins {
+        kotlin("jvm") version kotlinVersion
+        id("com.github.ben-manes.versions") version versionsPluginVersion
+        id("info.solidsoft.pitest") version pitestPluginVersion
+        id("io.gitlab.arturbosch.detekt") version detektPluginVersion
+        id("org.jlleitschuh.gradle.ktlint") version ktlintPluginVersion
+        id("org.owasp.dependencycheck") version dependencyCheckPluginVersion
+    }
+}
