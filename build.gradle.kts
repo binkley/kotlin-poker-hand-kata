@@ -15,8 +15,9 @@ plugins {
     kotlin("jvm")
     id("com.github.ben-manes.versions")
     id("info.solidsoft.pitest")
-    id("io.gitlab.arturbosch.detekt")
-    // TODO: Reenable after CVE-2021-42550 resolved
+    // TODO: Re-enable detekt after CVE-2021-4277 and others resolved
+    // id("io.gitlab.arturbosch.detekt")
+    // TODO: Re-enable ktlint after CVE-2021-42550 resolved
     // id("org.jlleitschuh.gradle.ktlint")
     id("org.owasp.dependencycheck")
     jacoco
@@ -43,10 +44,12 @@ configurations.all {
     }
 }
 
+/*
 detekt {
     // No support yet for configuring directly in Gradle
     config = files("config/detekt.yml")
 }
+*/
 
 jacoco {
     toolVersion = jacocoVersion
