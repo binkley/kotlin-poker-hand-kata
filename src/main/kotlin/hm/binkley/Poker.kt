@@ -44,5 +44,5 @@ class Hand(
     override operator fun compareTo(other: Hand) =
         ordered.first().compareTo(other.ordered.first())
 
-    override fun toString() = ordered.toString()
+    override fun toString() = ordered.joinToString(" ")
 }
