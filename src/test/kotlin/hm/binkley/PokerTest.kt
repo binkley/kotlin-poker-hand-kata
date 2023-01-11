@@ -11,7 +11,7 @@ import hm.binkley.Suit.DIAMONDS
 import hm.binkley.Suit.HEARTS
 import hm.binkley.Suit.SPADES
 import io.kotest.matchers.comparables.shouldBeGreaterThan
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class PokerTest {
     @Test
@@ -23,7 +23,6 @@ class PokerTest {
             FOUR of CLUBS,
             THREE of CLUBS
         )
-
         val handB = Hand(
             KING of SPADES,
             TEN of HEARTS,
