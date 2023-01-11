@@ -22,7 +22,7 @@ enum class Rank(val symbol: String) {
     KING("K"),
     ACE("A");
 
-    fun of(suit: Suit) = Card(suit, this)
+    infix fun of(suit: Suit) = Card(suit, this)
 }
 
 data class Card(val suit: Suit, val rank: Rank) : Comparable<Card> {

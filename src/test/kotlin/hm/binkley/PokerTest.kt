@@ -17,21 +17,21 @@ internal class PokerTest {
     @Test
     fun `should rank one of a kind`() {
         val handA = Hand(
-            ACE.of(SPADES),
-            TEN.of(HEARTS),
-            FIVE.of(DIAMONDS),
-            FOUR.of(CLUBS),
-            THREE.of(CLUBS)
+            ACE of SPADES,
+            TEN of HEARTS,
+            FIVE of DIAMONDS,
+            FOUR of CLUBS,
+            THREE of CLUBS
         )
 
         val handB = Hand(
-            KING.of(SPADES),
-            TEN.of(HEARTS),
-            FIVE.of(DIAMONDS),
-            FOUR.of(CLUBS),
-            THREE.of(CLUBS)
+            KING of SPADES,
+            TEN of HEARTS,
+            FIVE of DIAMONDS,
+            FOUR of CLUBS,
+            THREE of CLUBS
         )
 
-        handA.shouldBeGreaterThan(handB)
+        handA shouldBeGreaterThan handB
     }
 }
