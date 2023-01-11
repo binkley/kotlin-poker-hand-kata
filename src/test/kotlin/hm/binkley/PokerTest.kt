@@ -10,7 +10,7 @@ import hm.binkley.Suit.CLUBS
 import hm.binkley.Suit.DIAMONDS
 import hm.binkley.Suit.HEARTS
 import hm.binkley.Suit.SPADES
-import io.kotest.matchers.comparables.shouldBeGreaterThan
+import io.kotest.matchers.comparables.shouldBeLessThan
 import org.junit.jupiter.api.Test
 
 class PokerTest {
@@ -31,6 +31,6 @@ class PokerTest {
             THREE of CLUBS
         )
 
-        handA shouldBeGreaterThan handB
+        handA shouldBeLessThan handB
     }
 }

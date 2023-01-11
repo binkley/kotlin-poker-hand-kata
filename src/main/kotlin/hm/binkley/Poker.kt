@@ -1,26 +1,26 @@
 package hm.binkley
 
 enum class Suit(val symbol: String) {
-    CLUBS("C"),
-    DIAMONDS("D"),
-    HEARTS("H"),
     SPADES("S"),
+    HEARTS("H"),
+    DIAMONDS("D"),
+    CLUBS("C"),
 }
 
 enum class Rank(val symbol: String) {
-    TWO("2"),
-    THREE("3"),
-    FOUR("4"),
-    FIVE("5"),
-    SIX("6"),
-    SEVEN("7"),
-    EIGHT("8"),
-    NINE("9"),
-    TEN("10"),
-    JACK("J"),
-    QUEEN("Q"),
+    ACE("A"),
     KING("K"),
-    ACE("A");
+    QUEEN("Q"),
+    JACK("J"),
+    TEN("10"),
+    NINE("9"),
+    EIGHT("8"),
+    SEVEN("7"),
+    SIX("6"),
+    FIVE("5"),
+    FOUR("4"),
+    THREE("3"),
+    TWO("2");
 
     infix fun of(suit: Suit) = Card(suit, this)
 }
