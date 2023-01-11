@@ -20,38 +20,29 @@ enum class Rank(val symbol: String) {
     JACK("J"),
     QUEEN("Q"),
     KING("K"),
-    ACE("A"),
-    ;
+    ACE("A");
 
     fun of(suit: Suit) = Card(suit, this)
 }
 
 data class Card(val suit: Suit, val rank: Rank) : Comparable<Card> {
-    override fun compareTo(other: Card): Int {
-        TODO("Not yet implemented")
-    }
+    override fun compareTo(other: Card) = rank.compareTo(other.rank)
 
     override fun toString() = suit.symbol + rank.symbol
 }
 
-data class Hand(
-    val first: Card,
-    val second: Card,
-    val third: Card,
-    val fourth: Card,
-    val fifth: Card,
-) {
-    operator fun compareTo(other: Hand): Int {
-        val cardsA = sortedSetOf(first, second, third, fourth, fifth)
-        val cardsB = sortedSetOf(
-            other.first,
-            other.second,
-            other.third,
-            other.fourth,
-            other.fifth
-        )
-        return cardsA.first().compareTo(cardsB.first())
-    }
+class Hand(
+    first: Card,
+    second: Card,
+    third: Card,
+    fourth: Card,
+    fifth: Card,
+) : Comparable<Hand> {
+    private val ordered = sortedSetOf(first, second, third, fourth, fifth)
 
-    override fun toString() = "$first $second $third $fourth $fifth"
+    // TODO: Add more tests to flesh out comparing hands
+    override operator fun compareTo(other: Hand) =
+        ordered.first().compareTo(other.ordered.first())
+
+    override fun toString() = ordered.toString()
 }
