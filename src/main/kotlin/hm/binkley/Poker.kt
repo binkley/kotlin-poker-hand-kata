@@ -1,29 +1,36 @@
 package hm.binkley
 
 enum class Suit(val symbol: String) {
-    SPADES("S"),
-    HEARTS("H"),
+    CLUBS("C"),
     DIAMONDS("D"),
-    CLUBS("C");
+    HEARTS("H"),
+    SPADES("S"),
 }
 
 enum class Rank(val symbol: String) {
-    ACE("A"),
-    KING("K"),
-    QUEEN("Q"),
-    JACK("J"),
-    TEN("10"),
-    NINE("9"),
-    EIGHT("8"),
-    SEVEN("7"),
-    SIX("6"),
-    FIVE("5"),
-    FOUR("4"),
-    THREE("3"),
     TWO("2"),
+    THREE("3"),
+    FOUR("4"),
+    FIVE("5"),
+    SIX("6"),
+    SEVEN("7"),
+    EIGHT("8"),
+    NINE("9"),
+    TEN("10"),
+    JACK("J"),
+    QUEEN("Q"),
+    KING("K"),
+    ACE("A"),
+    ;
+
+    fun of(suit: Suit) = Card(suit, this)
 }
 
-data class Card(val suit: Suit, val rank: Rank) {
+data class Card(val suit: Suit, val rank: Rank) : Comparable<Card> {
+    override fun compareTo(other: Card): Int {
+        TODO("Not yet implemented")
+    }
+
     override fun toString() = suit.symbol + rank.symbol
 }
 
@@ -35,7 +42,15 @@ data class Hand(
     val fifth: Card,
 ) {
     operator fun compareTo(other: Hand): Int {
-        TODO("IMPLEMENT")
+        val cardsA = sortedSetOf(first, second, third, fourth, fifth)
+        val cardsB = sortedSetOf(
+            other.first,
+            other.second,
+            other.third,
+            other.fourth,
+            other.fifth
+        )
+        return cardsA.first().compareTo(cardsB.first())
     }
 
     override fun toString() = "$first $second $third $fourth $fifth"
