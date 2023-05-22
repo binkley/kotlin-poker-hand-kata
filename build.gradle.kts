@@ -132,7 +132,7 @@ val otherReleasePatterns = "^[0-9,.v-]+(-r)?$".toRegex()
 
 fun isStable(version: String): Boolean {
     val stableKeyword = listOf("RELEASE", "FINAL", "GA").any {
-        version.toUpperCase().contains(it)
+        version.uppercase().contains(it)
     }
     val otherReleasePattern = otherReleasePatterns.matches(version)
 
